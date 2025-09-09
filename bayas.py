@@ -3,7 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Laura Arteta
-# Jesús Berdugo
 
 img = cv2.imread("./bayas.jpeg")
 img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)

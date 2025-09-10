@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 # Laura Arteta
 
-img = cv2.imread("./bayas.jpeg")
+img = cv2.imread("./assets/bayas.jpeg")
 img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
 # capas de color RGB

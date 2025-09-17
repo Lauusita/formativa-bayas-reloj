@@ -65,7 +65,6 @@ for cnt in contours:
     if cv2.contourArea(cnt) < 50:
         continue
 
-    # Ajustar recta al contorno
     [vx, vy, x, y] = cv2.fitLine(cnt, cv2.DIST_L2, 0, 0.01, 0.01)
 
     # encuentra el punto más lejano al centro (punta de la manecilla)
@@ -73,7 +72,6 @@ for cnt in contours:
     idx_tip = np.argmax(distances)
     tip = cnt[idx_tip,0]
 
-    # Vector desde el centro hasta la punta
     dx = tip[0] - x_center
     dy = y_center - tip[1] 
 
@@ -82,10 +80,7 @@ for cnt in contours:
     angle_clock = (90 - angle_clock) % 360
     angles.append((angle_clock, tip))
 
-
 angle_min, angle_hour = angles[0][0], angles[1][0]
-
-print(f"Ángulo minutero: {angle_min:.2f}, Ángulo horario: {angle_hour:.2f}")
 
 minutes = int(round(angle_min / 6)) % 60
 hours = int(angle_hour // 30) % 12 or 12
@@ -95,8 +90,7 @@ hours = int(hours) if hours != 12 else 12
 
 print(f"Hora estimada: {hours:02d}:{minutes:02d}")
 
-# Mostrar resultados
 plt.figure(figsize=(15,5))
-plt.subplot(1,3,1); plt.title("Original"); plt.imshow(img_rgb); plt.axis("off")
-plt.subplot(1,3,2); plt.title("Máscara reducida"); plt.imshow(masked, cmap="gray"); plt.axis("off")
+plt.subplot(1,3,1); plt.title("Reloj"); plt.imshow(img_rgb); plt.axis("off")
+plt.subplot(1,3,2); plt.title("Manecillas separadas"); plt.imshow(masked, cmap="gray"); plt.axis("off")
 plt.show()

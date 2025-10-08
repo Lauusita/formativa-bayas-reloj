@@ -3,16 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 
-valid_numbers = np.concatenate([np.arange(start, start+60) for start in range(200, 1000, 100)])
-reloj_aleatorio = np.random.choice(valid_numbers)
-
-if reloj_aleatorio <= 959:
-    reloj_aleatorio = f"0{reloj_aleatorio}"
-else:
-    reloj_aleatorio = str(reloj_aleatorio)
-
 # Cargar imagen fija de prueba
-img = cv2.imread(f"./assets/data-resampled/clock_{reloj_aleatorio}.png")
+img = cv2.imread(f"./assets/AI-HR01.jpg")
 
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
